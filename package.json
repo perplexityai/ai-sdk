@@ -1,0 +1,45 @@
+{
+  "name": "@perplexity-ai/ai-sdk",
+  "version": "0.1.0",
+  "description": "Search the web with real-time results and advanced filtering powered by Perplexity's Search API",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts --format esm --dts",
+    "test": "tsx src/test.ts",
+    "prepublishOnly": "pnpm build"
+  },
+  "keywords": [
+    "ai",
+    "ai-sdk",
+    "tools",
+    "perplexity-ai",
+    "search",
+    "web-search"
+  ],
+  "author": "Perplexity AI",
+  "license": "MIT",
+  "packageManager": "pnpm@10.8.0",
+  "devDependencies": {
+    "@types/node": "^24.10.1",
+    "dotenv": "^17.2.3",
+    "tsup": "^8.5.0",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3"
+  },
+  "peerDependencies": {
+    "ai": "^5.0.0",
+    "zod": "^4.0.0"
+  }
+}
