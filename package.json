@@ -1,6 +1,6 @@
 {
   "name": "@perplexity-ai/ai-sdk",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Search the web with real-time results and advanced filtering powered by Perplexity's Search API",
   "type": "module",
   "main": "./dist/index.js",
