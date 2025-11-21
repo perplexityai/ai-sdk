@@ -222,4 +222,4 @@ MIT
 
 - [Perplexity Search API Documentation](https://docs.perplexity.ai/guides/search-quickstart)
 - [Get API Key](https://www.perplexity.ai/account/api/keys)
-- [Vercel AI SDK Documentation](https://sdk.vercel.ai/docs/integrations/ai-sdk/overview)
+- [Vercel AI SDK Documentation](https://ai-sdk.dev/docs/foundations/tools#using-ready-made-tool-packages)
