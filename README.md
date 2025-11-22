@@ -1,5 +1,7 @@
 # Perplexity Search for the Vercel AI SDK
 
+[![npm version](https://img.shields.io/npm/v/%40perplexity-ai%2Fai-sdk?style=for-the-badge&logo=npm&logoColor=white&color=CB3837)](https://www.npmjs.com/package/@perplexity-ai/ai-sdk)
+
 A powerful web search tool powered by Perplexity's Search API for use with the Vercel AI SDK. Search the web for real-time information, news, research papers, and articles with advanced filtering options including domain, language, date range, and recency filters.
 
 ## Installation
