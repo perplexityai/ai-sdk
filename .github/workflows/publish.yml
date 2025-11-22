@@ -38,5 +38,5 @@ jobs:
         run: pnpm build
         
       - name: Publish to npm
-        run: pnpm publish --access public --provenance
+        run: npm publish --access public --provenance
 
