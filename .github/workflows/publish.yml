@@ -9,8 +9,6 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
-    environment: 
-      name: production
     permissions:
       contents: read
       id-token: write # Required for OIDC
@@ -27,9 +25,12 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
-          node-version: '20'
+          node-version: '24'
           registry-url: 'https://registry.npmjs.org'
           cache: 'pnpm'
+
+      - name: Use npm for trusted publishing
+        run: npm install -g npm@11.5.1
           
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
@@ -39,4 +40,3 @@ jobs:
         
       - name: Publish to npm
         run: npm publish --access public --provenance
-

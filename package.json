@@ -1,6 +1,6 @@
 {
   "name": "@perplexity-ai/ai-sdk",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Search the web with real-time results and advanced filtering powered by Perplexity's Search API",
   "type": "module",
   "main": "./dist/index.js",
@@ -30,6 +30,14 @@
   ],
   "author": "Perplexity AI",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/perplexityai/ai-sdk"
+  },
+  "bugs": {
+    "url": "https://github.com/perplexityai/ai-sdk/issues"
+  },
+  "homepage": "https://github.com/perplexityai/ai-sdk#readme",
   "packageManager": "pnpm@10.8.0",
   "devDependencies": {
     "@types/node": "^24.10.1",
@@ -39,7 +47,7 @@
     "typescript": "^5.9.3"
   },
   "peerDependencies": {
-    "ai": "^5.0.0",
+    "ai": "^5.0.0 || ^6.0.0",
     "zod": "^4.0.0"
   }
 }

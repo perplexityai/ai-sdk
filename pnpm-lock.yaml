@@ -9,7 +9,7 @@ importers:
   .:
     dependencies:
       ai:
-        specifier: ^5.0.0
+        specifier: ^5.0.0 || ^6.0.0
         version: 5.0.98(zod@4.1.12)
       zod:
         specifier: ^4.0.0
