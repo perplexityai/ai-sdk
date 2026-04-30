@@ -9,6 +9,8 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    environment:
+      name: production
     permissions:
       contents: read
       id-token: write # Required for OIDC
@@ -28,9 +30,6 @@ jobs:
           node-version: '24'
           registry-url: 'https://registry.npmjs.org'
           cache: 'pnpm'
-
-      - name: Use npm for trusted publishing
-        run: npm install -g npm@11.5.1
           
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
@@ -39,4 +38,4 @@ jobs:
         run: pnpm build
         
       - name: Publish to npm
-        run: npm publish --access public --provenance
+        run: npm publish --access public
