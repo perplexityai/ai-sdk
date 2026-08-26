@@ -1,5 +1,6 @@
 import { tool } from "ai";
 import { z } from "zod";
+import packageJson from "../../package.json";
 import type { PerplexitySearchConfig, PerplexitySearchResponse } from "../types";
 
 export function perplexitySearch(config: PerplexitySearchConfig = {}) {
@@ -77,6 +78,7 @@ export function perplexitySearch(config: PerplexitySearchConfig = {}) {
           headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${apiKey}`,
+            'X-Pplx-Integration': `perplexity-ai-sdk/${packageJson.version}`,
           },
           body: JSON.stringify(requestBody),
         });
