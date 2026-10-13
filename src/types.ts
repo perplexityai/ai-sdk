@@ -28,12 +28,12 @@ export interface PerplexitySearchResult {
   /**
    * Publication date of the content
    */
-  date?: string;
+  date?: string | null;
 
   /**
    * Last updated date of the content
    */
-  last_updated?: string;
+  last_updated?: string | null;
 }
 
 /**

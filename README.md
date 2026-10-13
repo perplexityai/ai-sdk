@@ -113,14 +113,18 @@ The AI can perform multiple searches:
 The AI can use these parameters when calling the search tool:
 
 - `query` - Search query (string or array of up to 5 strings)
+- `search_type` - `"web"` (default) or `"fast"` for lower-latency, lower-cost web search
 - `max_results` - Number of results (1-20, default: 10)
-- `max_tokens_per_page` - Content extraction limit (256-2048, default: 1024)
+- `max_tokens` - Total content token limit across all results (1-1,000,000; omitted by default)
+- `max_tokens_per_page` - Per-page content token limit (1-1,000,000, default: 1024)
 - `country` - ISO country code for regional results (e.g., "US", "GB")
 - `search_domain_filter` - Include/exclude domains (max 20)
-- `search_language_filter` - Language filtering (max 10 ISO codes)
+- `search_language_filter` - Language filtering (max 20 ISO codes)
 - `search_after_date` - Results after date (MM/DD/YYYY format)
 - `search_before_date` - Results before date (MM/DD/YYYY format)
-- `search_recency_filter` - Time-based filtering ("day", "week", "month", "year")
+- `last_updated_after_filter` - Results updated after date (MM/DD/YYYY format)
+- `last_updated_before_filter` - Results updated before date (MM/DD/YYYY format)
+- `search_recency_filter` - Time-based filtering ("hour", "day", "week", "month", "year")
 
 ## API Configuration
 
@@ -136,7 +140,7 @@ const search = perplexitySearch({
 
 ## Response Format
 
-The tool returns structured search results:
+The tool returns structured search results. `date` and `last_updated` may be omitted or `null` when unavailable:
 
 ```typescript
 {

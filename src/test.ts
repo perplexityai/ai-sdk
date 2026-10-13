@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import { perplexitySearch } from "./index";
+import { testSearchOptions } from "./test-search-options";
 
 async function testDateFilterRequests() {
   const search = perplexitySearch({ apiKey: "test-api-key" });
@@ -48,6 +49,7 @@ async function testDateFilterRequests() {
 
 async function main() {
   console.log("Testing Perplexity Search Tool...\n");
+  await testSearchOptions();
 
   const tool = perplexitySearch();
   console.log("  Tool created successfully");
