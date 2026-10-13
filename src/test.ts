@@ -1,4 +1,50 @@
+import assert from "node:assert/strict";
 import { perplexitySearch } from "./index";
+
+async function testDateFilterRequests() {
+  const search = perplexitySearch({ apiKey: "test-api-key" });
+  const originalFetch = globalThis.fetch;
+  let requestBody: unknown;
+  const response = { results: [], id: "test-search" };
+
+  globalThis.fetch = async (url, init) => {
+    assert.equal(url, "https://api.perplexity.ai/search");
+    assert.equal(init?.method, "POST");
+    requestBody = JSON.parse(String(init?.body));
+    return new Response(JSON.stringify(response), {
+      headers: { "Content-Type": "application/json" },
+    });
+  };
+
+  try {
+    const cases = [
+      [{ search_after_date: "3/1/2025" }, { search_after_date_filter: "3/1/2025" }],
+      [{ search_before_date: "3/15/2025" }, { search_before_date_filter: "3/15/2025" }],
+      [
+        { search_after_date: "3/1/2025", search_before_date: "3/15/2025" },
+        { search_after_date_filter: "3/1/2025", search_before_date_filter: "3/15/2025" },
+      ],
+      [{}, {}],
+    ] as const;
+
+    for (const [input, expected] of cases) {
+      const result = await search.execute!(
+        { query: "climate research", ...input },
+        { toolCallId: "test", messages: [] },
+      );
+      assert.deepEqual(requestBody, {
+        query: "climate research",
+        max_results: 10,
+        max_tokens_per_page: 1024,
+        ...expected,
+      });
+      assert.deepEqual(result, response);
+    }
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
+  console.log("  Date filters use canonical API fields and preserve tool arguments");
+}
 
 async function main() {
   console.log("Testing Perplexity Search Tool...\n");
@@ -42,6 +88,8 @@ async function main() {
   if (originalKey) {
     process.env.PERPLEXITY_API_KEY = originalKey;
   }
+
+  await testDateFilterRequests();
 
   console.log("\nAll tests passed!");
   console.log("Note: To test with actual API calls, set PERPLEXITY_API_KEY in your .env file");
