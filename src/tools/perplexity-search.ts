@@ -63,10 +63,10 @@ export function perplexitySearch(config: PerplexitySearchConfig = {}) {
         requestBody.search_language_filter = search_language_filter;
       }
       if (search_after_date !== undefined) {
-        requestBody.search_after_date = search_after_date;
+        requestBody.search_after_date_filter = search_after_date;
       }
       if (search_before_date !== undefined) {
-        requestBody.search_before_date = search_before_date;
+        requestBody.search_before_date_filter = search_before_date;
       }
       if (search_recency_filter !== undefined) {
         requestBody.search_recency_filter = search_recency_filter;
